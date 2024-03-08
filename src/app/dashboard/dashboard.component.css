@@ -28,8 +28,11 @@ textarea{
 }
 .card2{
     width: 23rem;
-    height: 13rem;
+    height: 20rem;
     border: 1px solid darkgray;
+}
+.insideobj{
+  margin-top: -2rem;
 }
 
 .card{
@@ -61,15 +64,16 @@ input[type=text],select,textarea{
     padding: 20px;
     border-bottom: 1px solid black;
     /* background:rgb(30, 30, 44); */
-    background: linear-gradient(90deg, #0b1324 0%, #182848 100%);
+    background: linear-gradient(90deg, #0b1324 0%, #253d6e 100%);
+    /* background: linear-gradient(90deg, #3106ee 0%, #202d4d 100%); */
   }
   .logo{
     display: flex;
-    align-items: center;
+    align-items:center;
     color: white;
-    font-size: 13px;
-    font-weight: 300;
-    margin: 2rem 8rem 2rem 2rem;
+    font-size: 10px;
+    font-weight: 200;
+    margin: 2rem 5rem 2rem 2rem;
   }
 
   /* .logo a{
@@ -109,6 +113,7 @@ input[type=text],select,textarea{
 .side-nav{
   display: flex;
 }
+
 nav{
   position: relative;
   top: 0;
@@ -121,7 +126,17 @@ nav{
   overflow: hidden;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
+.theme-dark #side-nav {
+  background-color: #293541;
+  color: #cdd0d8;
+}
 
+.sidebar-widget{
+  margin-top: 3rem;
+  color: aliceblue;
+  text-align: center;
+
+}
 
 .logo{
   text-align: left;
@@ -148,6 +163,11 @@ a{
   padding: 10px;
   text-decoration: none;
 }
+.sidebar:hover{
+  background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+  text-decoration: none;
+  color: black;
+}
 nav .fas{
   position: relative;
   width: 70px;
@@ -172,11 +192,15 @@ nav .fab{
   text-decoration: none;
   font-size: 17px;
 }
-a:hover{
-  background:lightslategray;
+
+.nav-item1{
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
   text-decoration: none;
-  color: black;
+  font-size: 14px;
 }
+
 .logout{
   position: absolute;
   bottom: 0;
@@ -185,4 +209,9 @@ a:hover{
 .form-select{
     margin-left: 3rem;
     width: 25rem;
+} */
+/* .badge{
+  position: relative;
+    top: -29px;
+    left: 85px
 } */

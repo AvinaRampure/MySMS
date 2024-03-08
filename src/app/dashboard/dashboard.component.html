@@ -10,6 +10,12 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -23,6 +29,7 @@
             crossorigin="anonymous"></script>
 
 
+
     </head>
 
     <form [formGroup]="smsForm" (ngSubmit)="onSubmit()">
@@ -30,11 +37,11 @@
         <body>
             <header class="header">
                 <div class="logo">
-                    <img src="../../assets/Logo.avif" alt="">
-                    <h3>SMS 123</h3>
+                    <h2 style="color: azure;">SMS 123</h2> 
                 </div>
                 <div class="dt">
-                    <p class="mt-3" style="font-size: medium;">Date Time: {{CurrentDate | date: 'M/d/yyyy-h:mm:ss a'}}</p>
+                    <p class="mt-3" style="font-size: medium;">Date Time: {{CurrentDate | date: 'MM/dd/yyyy - hh:mm:ss
+                        a'}}</p>
                 </div>
                 <li style="list-style: none;">
                     <marquee style="color: white;font-size: 15px; font-weight: bold; padding-top: 7px;border-left: 1px solid white;border-right:
@@ -49,7 +56,8 @@
                     <i class="fas fa-bell"></i>
                     <div class="w3-dropdown-hover">
                         <button class="w3-button "><i class="fas fa-address-card"></i></button>
-                        <div class="w3-dropdown-content w3-bar-block w3-border" style="background-color: rgb(30, 30, 44);">
+                        <div class="w3-dropdown-content w3-bar-block w3-border"
+                            style="background-color: rgb(30, 30, 44);">
                             <a href="#" class="w3-bar-item w3-button">Update Profile</a>
                             <a href="#" class="w3-bar-item w3-button">Logout</a>
                         </div>
@@ -63,45 +71,80 @@
             <div class="side-nav">
                 <nav>
                     <ul>
-                        <li><a href="#">
+                        <li><a class="sidebar" href="#">
                                 <i class="fas fa-home"></i>
                                 <span class="nav-item">Dashboard</span>
                             </a></li>
-                        <li><a href="">
+                        <li><a class="sidebar" href="">
                                 <i class="fas fa-user"></i>
                                 <span class="nav-item">API</span>
                             </a></li>
-                        <li><a href="">
+                        <li>
+                            <a class="sidebar" href="#submenu1" data-bs-toggle="collapse">
                                 <i class="fas fa-wallet"></i>
                                 <span class="nav-item">Send SMS</span>
-                            </a></li>
-                        <li><a href="">
+                            </a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a class="sidebar" href="#">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="nav-item1">Quick SMS</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sidebar" href="#">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="nav-item1">Advance SMS</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sidebar" href="#">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="nav-item1">Customize SMS</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="sidebar" href="">
                                 <i class="fab fa-whatsapp"></i>
                                 <span class="nav-item">Whatsapp</span>
                             </a></li>
-                        <li><a href="">
+                        <li><a class="sidebar" href="">
                                 <i class="fas fa-tasks"></i>
                                 <span class="nav-item">Manage items</span>
                             </a></li>
-                        <li><a href="">
+                        <li><a class="sidebar" href="">
                                 <i class="fas fa-chart-line"></i>
                                 <span class="nav-item">View Reports</span>
                             </a></li>
-                        <li><a href="">
+                        <li><a class="sidebar" href="">
                                 <i class="fas fa-cog"></i>
                                 <span class="nav-item">Settings</span>
                             </a></li>
-                        <!-- <li><a href="" class="logout">
-              <i class="fas fa-sign-out-alt"></i>
-              <span class="nav-item">Log out</span>
-            </a></li> -->
                     </ul>
+
+                    <div class="sidebar-widget align-center">
+                        <label>Change Theme</label>
+                        <br>
+                        <div class="btn-group" data-toggle="buttons" id="theme-switcher">
+                            <label class="btn active" style="color: white;">
+                                <input type="radio" name="theme-switcher" data-theme="bright"> Bright
+
+                            </label>
+                            <label class="btn" style="color: white;">
+                                <input type="radio" name="theme-switcher" data-theme="dark">Dark
+
+                            </label>
+                        </div>
+                    </div>
                 </nav>
 
 
                 <div class="container d-flex ">
                     <div class="card card1 mt-3">
-                        <h5 class="card-header" style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);"><i class="fas fa-bars"></i> Send
+                        <h5 class="card-header"
+                            style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;"><i
+                                class="fas fa-bars"></i> Send
                             SMS</h5>
                         <div class="card-body">
                             <div class="Sender d-flex">
@@ -118,15 +161,15 @@
                             <br>
                             <div class="template d-flex">
                                 <label id="label" for="Template"> Template </label>
-                                <select class="form-select col-9 mx-4 " formControlName="templateid" (change)="changevalue()"
-                                    aria-label="Default select example">
-                                    <option selected>--select--</option>
-                                    <option value="1707161891201501738">Your My SMS verification Code id. Do not share
+                                <select class="form-select col-9 mx-4 " formControlName="templateid"
+                                    (change)="changevalue($event) ">
+                                    <option selected="0">--Select--</option>
+                                    <option value="1707161891201501738">Your My SMS verification Code id . Do not share
                                         this code with others Team Nuevas</option>
-                                    <option value="2">Dear User your OTP is 1234 Kindly use OTP to validate your
-                                        Registration. Team Trackzia</option>
-                                    <option value="3">Dear 1234 , Your Complaint with Complaint Id: 1234 has Been
-                                        Resolve Kindly Share OTP, The OTP is 1234 \n From Nuevas</option>
+                                    <option value="1707161855199873979">Dear User your OTP is Kindly use OTP to validate
+                                        your Registration. Team Trackzia</option>
+                                    <option value="1707161899992775140">Dear , Your Complaint with Complaint Id: has
+                                        Been Resolve Kindly Share OTP, The OTP is \n From Nuevas</option>
                                 </select>
                             </div>
                             <br>
@@ -146,7 +189,10 @@
                             <hr>
                             <br>
                             <div>
-                                <input type="text"  style="width: 38rem;height: 3rem; font-size: small;text-align: center;background-color: rgb(204, 223, 235);" class="textbox" placeholder="Info! One variable {#var#} = 30 characters only. Enter the number of characters accordingly." >
+                                <input type="text"
+                                    style="width: 38rem;height: 3rem; font-size: small;text-align: center;background-color: rgb(204, 223, 235);"
+                                    class="textbox"
+                                    placeholder="Info! One variable {#var#} = 30 characters only. Enter the number of characters accordingly.">
                             </div>
                             <br>
                             <div class="form-check">
@@ -161,8 +207,17 @@
                                     id="exampleFormControlTextarea1" rows="3"></textarea>
                                 <br>
                             </div>
-                            <button class="btn btn-primary" type="submit"
-                                style="background: rgb(30, 30, 44); color: white;height: 35px;">Confirm</button>
+                            <span class="badge badge-secondary" style="position: relative;
+                                top: -23px;left: 85px">Count:0 Text:0
+                            </span>
+                            <!-- <input type="text" [(ngModel)]="inputText" (input)="calculateCharacterCount()">
+                                <div>Character Count: {{ characterCount }}</div> -->
+                            <span class="badge badge-primary" style="position: relative; top:-23px;left: 283px;">Total
+                                Credit Charge:0</span>
+                            <br>
+                            <button class="btn btn-primary " type="submit" style="background: rgb(30, 30, 44); color: white;height: 35px;position: relative;
+                                left: 433px;">Confirm</button>
+                            <br>
                         </div>
                         <hr>
                         <div class="card-footer" style="text-align: right;">
@@ -174,25 +229,110 @@
                                     <textarea class="form-control col-9 mx-3" placeholder="enter the mobile no"
                                         id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
-                                <button class="btn btn-primary"
-                                    style="background-color: rgb(0, 21, 253); color: white; width:20%; margin-right: 35rem;">Test
+                                <button class="btn btn-primary" style="background-color: rgb(0, 21, 253); color: white; width:20%; margin-right: 35rem;height: 35px;position: relative;
+                                    left: 400px;top:10px">Test
                                     SMS</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card d-flex  mx-2 mt-3">
+                    <div class="card   mx-2 mt-3">
 
                         <div class="card card2 mx-2 mt-3">
-                            <h5 class="card-header" style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);"><i class="fas fa-bars"></i>
+                            <h5 class="card-header"
+                                style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
+                                <i class="fas fa-bars"></i>
                                 Select Option</h5>
-                            <div class="card-body">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1"> Select all</label><br>
-                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                                <label for="vehicle2"> Post</label><br>
-                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                                <label for="vehicle3"> Test</label><br>
+                            <div class="card-body overflow-auto">
+                                <div class="col-md-12 insideobj">
+                                    <div class="widget box">
+                                        <div class="widget-header">
+                                            <div class="toolbar no-padding">
+                                                <div class="btn-group">
+                                                    <span class="btn btn-xs widget-collapse"><i
+                                                            class="icon-angle-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="widget-content"
+                                            style="overflow-x: auto; overflow-y: auto; max-height: 300px;">
+                                            <div class="tabbable tabbable-custom" id="tabs2">
+                                                <ul class="nav nav-tabs1" style="display: flex;">
+                                                    <li class=""><a href="#tab_feed_1 " style="color: black; width: 9rem;
+                                                    border: 1px solid black;background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+                                                    text-decoration: none;text-align: center;border-radius: 8px;"
+                                                            data-toggle="tab">Groups</a></li>
+                                                    <li class=""><a href="#tab_feed_2" style="color: black; width: 8rem;
+                                                    border: 1px solid black;background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+                                                    text-decoration: none;text-align: center;border-radius: 8px;"
+                                                            data-toggle="tab">Choose File</a></li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane" id="tab_feed_1">
+                                                        <div class="form-horizontal row-border" id="validate-1"
+                                                            action="#" novalidate="novalidate">
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    <input id="ContentPlaceHolder1_chkallgroup"
+                                                                        type="checkbox"
+                                                                        name="ctl00$ContentPlaceHolder1$chkallgroup"
+                                                                        onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$chkallgroup\',\'\')', 0)"><label
+                                                                        for="ContentPlaceHolder1_chkallgroup">Select
+                                                                        All</label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <table id="ContentPlaceHolder1_chkGroups">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><input
+                                                                                        id="ContentPlaceHolder1_chkGroups_0"
+                                                                                        type="checkbox"
+                                                                                        name="ctl00$ContentPlaceHolder1$chkGroups$0"
+                                                                                        onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$chkGroups$0\',\'\')', 0)"
+                                                                                        value="4144"><label
+                                                                                        for="ContentPlaceHolder1_chkGroups_0">poo(2)</label></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><input
+                                                                                        id="ContentPlaceHolder1_chkGroups_1"
+                                                                                        type="checkbox"
+                                                                                        name="ctl00$ContentPlaceHolder1$chkGroups$1"
+                                                                                        onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$chkGroups$1\',\'\')', 0)"
+                                                                                        value="4146"><label
+                                                                                        for="ContentPlaceHolder1_chkGroups_1">test(0)</label></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane active" id="tab_feed_2">
+                                                        <div class="form-horizontal row-border" id="validate-1"
+                                                            action="#" novalidate="novalidate">
+                                                            <div class="controls">
+                                                                Download .xls File Format
+                                                                <a id="ContentPlaceHolder1_btnDownload"
+                                                                    title="Download .xls File Format"
+                                                                    href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$btnDownload','')"
+                                                                    style="font-size:Medium;">Click Here</a>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-md-12">
+                                                                    <input type="file"
+                                                                        name="ctl00$ContentPlaceHolder1$fupImoprt"
+                                                                        id="ContentPlaceHolder1_fupImoprt"
+                                                                        data-style="fileinput" class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer" style="height: 22px; ">
                                 <div>
@@ -201,11 +341,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card card2 mx-2 mt-3">
-                            <h5 class="card-header" style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);"><i class="fas fa-bars"></i>
+                        <div class="card card3 mx-2 mt-3">
+                            <!-- <select class="card-header" style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);"><i class="fas fa-bars"></i>
+                                Select ChatBot</select>  -->
+                            <h5 class="card-header"
+                                style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
+                                <i class="fas fa-bars"></i>
                                 Select ChatBot</h5>
                             <div class="card-body">
-
+                                <select class="form-select col-10 mx-3" formControlName="sender"
+                                    aria-label="Default select example">
+                                    <option select>select</option>
+                                </select>
                             </div>
                             <div class="card-footer" style="height: 22px;">
                                 <div>
@@ -214,20 +361,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card card2 mx-2 mt-3">
-                            <h5 class="card-header" style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);"><i class="fas fa-bars"></i>
+                        <div class="card card4 mx-2 mt-3">
+                            <h5 class="card-header"
+                                style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
+                                <i class="fas fa-bars"></i>
                                 Select Media</h5>
                             <div class="card-body">
-                                <div class="form-group" *ngIf="selectedOption === 'media'">
-                                    <label for="media-type">Media Type</label>
-                                    <select id="media-type">
-                                      <option value="image">Image</option>
-                                      <option value="video">Video</option>
-                                    </select>
-                                  </div>
-                                  <div class="undefined-info" *ngIf="selectedOption === 'undefined'">
-                                    Undefined
-                                  </div>
+                                <!-- <div class="container">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <button type="button" class="btn btn-primary" >Image</button>
+                                      <button type="button" class="btn btn-primary" >Video</button>
+                                    </div>
+                                  </div> -->
+                                <div class="container">
+                                    <a href="#demo" class="btn btn-primary" data-toggle="collapse" 
+                                    style="background: linear-gradient(90deg, #0b1324 0%, #213358 100%);width:10rem;">Image</a>
+                                    <div id="demo" class="collapse">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                        minim veniam,
+                                    </div>
+                                    <!-- <a href="#demo" class="btn btn-primary" data-toggle="collapse" 
+                                    style="background: linear-gradient(90deg, #0b1324 0%, #213358 100%);width: 35px;">Video</a> -->
+                                </div>
                             </div>
                             <div class="card-footer" style="height: 22px;">
                                 <div>
