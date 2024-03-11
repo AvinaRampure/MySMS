@@ -1,0 +1,271 @@
+<form [formGroup]="smsForm" (ngSubmit)="onSubmit()">
+
+    <body>
+            <div class="container d-flex ">
+                <div class="card card1 mt-3">
+                    <h5 class="card-header"
+                        style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;"><i
+                            class="fas fa-bars"></i> Send
+                        SMS</h5>
+                    <div class="card-body">
+                        <div class="Sender d-flex">
+                            <label id="label" for="Sender ID">Sender ID </label>
+                            <select class="form-select col-9 mx-4" formControlName="sender"
+                                aria-label="Default select example">
+                                <option selected>--select--</option>
+                                <option value="NUEVAS">NUEVAS</option>
+                                <option value="TRKZIA">TRKZIA</option>
+                            </select>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="template d-flex">
+                            <label id="label" for="Template"> Template </label>
+                            <select class="form-select col-9 mx-4 " formControlName="templateid"
+                                (change)="changevalue($event) ">
+                                <option selected="0">--Select--</option>
+                                <option value="1707161891201501738">Your My SMS verification Code id . Do not share
+                                    this code with others Team Nuevas</option>
+                                <option value="1707161855199873979">Dear User your OTP is Kindly use OTP to validate
+                                    your Registration. Team Trackzia</option>
+                                <option value="1707161899992775140">Dear , Your Complaint with Complaint Id: has
+                                    Been Resolve Kindly Share OTP, The OTP is \n From Nuevas</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="mb-4 d-flex">
+                            <label id="label" for="exampleFormControlTextarea1" class="form-label">Mobile No</label>
+                            <textarea class="form-control col-9 mx-4" (keydown.enter)="mobileNoCount()" formControlName="mob"
+                                placeholder="you can send SMS in batches upto 500 at a time"
+                                id="exampleFormControlTextarea1" rows="3"></textarea>                                
+                        </div>
+                        <span class="badge badge-secondary" style="position: relative;
+                            top: -23px;left: 91px">Valid MobileCount: {{ validMobCount }}
+                        </span>
+                        <span class="badge badge-primary" style="position: relative; top:-23px;left: 250px;">Invalid MobileCount: {{invalidMobCount}}</span>
+                        <div class="form-check" style="text-align: right;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="clearText($event)">
+                            <label class="form-check-label" style="font-size: small;" for="flexCheckDefault">
+                                Clear list
+                            </label>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div>
+                            <input type="text"
+                                style="width: 38rem;height: 3rem; font-size: small;text-align: center;background-color: rgb(204, 223, 235);"
+                                class="textbox"
+                                placeholder="Info! One variable {#var#} = 30 characters only. Enter the number of characters accordingly.">
+                        </div>
+                        <br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" style="font-size: small;" for="flexCheckDefault">
+                                Unicode(Hindi,Marathi SMS)
+                            </label>
+                        </div>
+                        <div class="mb-4 d-flex">
+                            <label id="label" for="exampleFormControlTextarea1" class="form-label">Message</label>
+                            <textarea class="form-control col-9 mx-4" (mouseover)="onMouseOver()" formControlName="msg"
+                                id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <br>
+                        </div>
+                        <span class="badge badge-secondary" style="position: relative;
+                            top: -23px;left: 85px">Count: {{ textlength }} Text: {{ limit }}
+                        </span>
+                        <span class="badge badge-primary" style="position: relative; top:-23px;left: 282px;">Total
+                            Credit Charge:{{creditcount}}</span>
+                        <br>
+                        <button class="btn btn-primary " type="submit" style="background: rgb(30, 30, 44); color: white;height: 35px;position: relative;
+                            left: 433px;">Confirm</button>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class="card-footer" style="text-align: right;">
+                        <div>
+                            <br>
+                            <div class="mb-4 d-flex">
+                                <label id="label" for="exampleFormControlTextarea1" class="form-label">Test
+                                    SMS</label>
+                                <textarea class="form-control col-9 mx-3" placeholder="enter the mobile no"
+                                    id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <button class="btn btn-primary" style="background-color: rgb(0, 21, 253); color: white; width:20%; margin-right: 35rem;height: 35px;position: relative;
+                                left: 400px;top:10px">Test
+                                SMS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card   mx-2 mt-3">
+
+                    <div class="card card2 mx-2 mt-3">
+
+                        <h5 class="card-header"
+                        style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
+                        <i class="fas fa-bars"></i>
+                        Select Option</h5>
+                        <div class="card-body overflow-auto">
+                            <div class="col-md-12 insideobj">
+                                <div class="widget box">
+                                    <div class="widget-header">
+                                        <div class="toolbar no-padding">
+                                            <div class="btn-group">
+                                                <span class="btn btn-xs widget-collapse"><i
+                                                    class="icon-angle-down"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="widget-content"
+                                        style="overflow-x: auto; overflow-y: auto; max-height: 300px;">
+                                        <div class="tabbable tabbable-custom" id="tabs2">
+                                            <ul class="nav nav-tabs " style="display: flex;background-color: lavender;" >
+                                                <li class="nav-item">
+                                                  <a class="nav-link " href="#tab_feed_1"  data-toggle="tab">Groups</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link " href="#tab_feed_2"  data-toggle="tab">Choose File</a>
+                                                </li>
+                                              </ul>
+                                            <!-- <ul class="nav nav-tabs" style="display: flex;">
+                                                <li class=""><a href="#tab_feed_1 "
+                                                        data-toggle="tab">Groups</a></li>
+                                                <li class=""><a href="#tab_feed_2" 
+                                                        data-toggle="tab">Choose File</a></li>
+                                            </ul> -->
+                                            <div class="tab-content">
+                                                <div class="tab-pane" id="tab_feed_1">
+                                                    <div class="form-horizontal row-border" id="validate-1"
+                                                        action="#" novalidate="novalidate">
+                                                        <div class="form-group">
+                                                            <br>
+                                                            <div class="col-md-12">
+                                                                <input id="ContentPlaceHolder1_chkallgroup"
+                                                                    type="checkbox"
+                                                                    name="ctl00$ContentPlaceHolder1$chkallgroup"
+                                                                    onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$chkallgroup\',\'\')', 0)"><label
+                                                                    for="ContentPlaceHolder1_chkallgroup">Select
+                                                                    All</label>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <table id="ContentPlaceHolder1_chkGroups">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td><input
+                                                                                    id="ContentPlaceHolder1_chkGroups_0"
+                                                                                    type="checkbox"
+                                                                                    name="ctl00$ContentPlaceHolder1$chkGroups$0"
+                                                                                    onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$chkGroups$0\',\'\')', 0)"
+                                                                                    value="4144"><label
+                                                                                    for="ContentPlaceHolder1_chkGroups_0">poo(2)</label></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><input
+                                                                                    id="ContentPlaceHolder1_chkGroups_1"
+                                                                                    type="checkbox"
+                                                                                    name="ctl00$ContentPlaceHolder1$chkGroups$1"
+                                                                                    onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$chkGroups$1\',\'\')', 0)"
+                                                                                    value="4146"><label
+                                                                                    for="ContentPlaceHolder1_chkGroups_1">test(0)</label></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane active" id="tab_feed_2">
+                                                    <div class="form-horizontal row-border" id="validate-1"
+                                                        action="#" novalidate="novalidate">
+                                                        <br>
+                                                        <div class="controls">
+                                                            Download .xls File Format
+                                                            <a id="ContentPlaceHolder1_btnDownload"
+                                                                title="Download .xls File Format"
+                                                                href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$btnDownload','')"
+                                                                style="font-size:Medium;">Click Here</a>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
+                                                            <div class="col-md-12">
+                                                                <input type="file"
+                                                                    name="ctl00$ContentPlaceHolder1$fupImoprt"
+                                                                    id="ContentPlaceHolder1_fupImoprt"
+                                                                    data-style="fileinput" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="card-footer" style="height: 22px; ">
+                            <div>
+                                <button class="btn btn-primary"
+                                    style="background: rgb(30, 30, 44); color: white;">Confirm</button>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="card card3 mx-2 mt-3">
+                        <!-- <select class="card-header" style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);"><i class="fas fa-bars"></i>
+                            Select ChatBot</select>  -->
+                        <h5 class="card-header"
+                            style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
+                            <i class="fas fa-bars"></i>
+                            Select ChatBot</h5>
+                        <div class="card-body">
+                            <select class="form-select col-10 mx-3" formControlName="sender"
+                                aria-label="Default select example">
+                                <option select>select</option>
+                            </select>
+                        </div>
+                        <div class="card-footer" style="height: 22px;">
+                            <div>
+                                <button class="btn btn-primary"
+                                    style="background-color: rgb(30, 30, 44); color: white">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card4 mx-2 mt-3">
+                        <h5 class="card-header"
+                            style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
+                            <i class="fas fa-bars"></i>
+                            Select Media</h5>
+                        <div class="card-body">
+                            <!-- <div class="container">
+                                <a href="#demo" class="btn btn-primary" data-toggle="collapse" 
+                                style="background: linear-gradient(90deg, #0b1324 0%, #213358 100%);width:10rem;">Image</a>
+                                <a href="#demo" class="btn btn-primary" data-toggle="collapse" 
+                                    style="background: linear-gradient(90deg, #0b1324 0%, #213358 100%);width: 35px;">Video</a>
+                                </div> -->
+                                
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link "href="#demo" data-toggle="collapse" >Images</a>                                       
+                                        <div id="demo" class="collapse">
+                                            This content contains data regarding the existing images which are already beimg uploaded.
+
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Video description</a>
+                                </li>
+                              </ul>
+                        </div>
+                        <div class="card-footer" style="height: 22px;">
+                            <div>
+                                <button class="btn btn-primary"
+                                    style="background-color: rgb(30, 30, 44); color: white">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+</form>
+<router-outlet></router-outlet>

@@ -12,60 +12,60 @@ import { ThemeService } from '../theme.service';
 })
 export class DashboardComponent {
 
-  selectedOption: string = '';
+  // selectedOption: string = '';
 
-  CurrentDate=new Date(); 
+  // CurrentDate=new Date(); 
 
-  inputText: string = '';
-  characterCount: number = 0;
+  // inputText: string = '';
+  // characterCount: number = 0;
 
-  calculateCharacterCount(): void {
-    this.characterCount = this.inputText.length;
-  }
+  // calculateCharacterCount(): void {
+  //   this.characterCount = this.inputText.length;
+  // }
 
-  smsForm! :FormGroup;
-  display:any
-  selectedTemplateId:any;
-  constructor(private service: SMSServiceService, private formbuilder:FormBuilder,private router:Router,
-    private httpclient:HttpClient,private themeService: ThemeService){
-    setInterval(()=>{
-      this.CurrentDate=new Date()
-    },1000)
-  }
+  // smsForm! :FormGroup;
+  // display:any
+  // selectedTemplateId:any;
+  // constructor(private service: SMSServiceService, private formbuilder:FormBuilder,private router:Router,
+  //   private httpclient:HttpClient,private themeService: ThemeService){
+  //   setInterval(()=>{
+  //     this.CurrentDate=new Date()
+  //   },1000)
+  // }
 
-  ngOnInit(){
-    this.smsForm=this.formbuilder.group({
-      username:["demotr"],
-      password:["tr@1234"],
-      sender:[''],
-      templateid:[''],
-      mob:[''],
-      msg:[''],
-      coding:['1']
-    });
-  }
+  // ngOnInit(){
+  //   this.smsForm=this.formbuilder.group({
+  //     username:["demotr"],
+  //     password:["tr@1234"],
+  //     sender:[''],
+  //     templateid:[''],
+  //     mob:[''],
+  //     msg:[''],
+  //     coding:['1']
+  //   });
+  // }
 
-  changevalue(event: Event): void{
-    const templateid=(event.target as HTMLSelectElement).value;
+  // changevalue(event: Event): void{
+  //   const templateid=(event.target as HTMLSelectElement).value;
 
-    let message="";
-    switch (templateid) {
-      case '1707161891201501738':
-        message = 'Your My SMS verification Code id . Do not share this code with others Team Nuevas';
-        break;
-      case '1707161855199873979':
-        message = 'Dear User your OTP is  Kindly use OTP to validate your Registration. Team Trackzia';//match this with value in dropdown
-        break;
-      case '1707161899992775140':
-        message = 'Dear  , Your Complaint with Complaint Id:  has Been Resolve Kindly Share OTP, The OTP is  \n From Nuevas';
-        break;
-      default:
-        message = '';
-        break;
-    }
-    this.smsForm.patchValue({
-      msg: message
-    });
+  //   let message="";
+  //   switch (templateid) {
+  //     case '1707161891201501738':
+  //       message = 'Your My SMS verification Code id . Do not share this code with others Team Nuevas';
+  //       break;
+  //     case '1707161855199873979':
+  //       message = 'Dear User your OTP is  Kindly use OTP to validate your Registration. Team Trackzia';//match this with value in dropdown
+  //       break;
+  //     case '1707161899992775140':
+  //       message = 'Dear  , Your Complaint with Complaint Id:  has Been Resolve Kindly Share OTP, The OTP is  \n From Nuevas';
+  //       break;
+  //     default:
+  //       message = '';
+  //       break;
+  //   }
+  //   this.smsForm.patchValue({
+  //     msg: message
+  //   });
 
   }
 
@@ -92,12 +92,4 @@ export class DashboardComponent {
   //     // })
   //   }
 
-    onSubmit(){
-      this.service.getsms(this.smsForm.value).subscribe((res:any)=>{
-        alert("Message sent successfully");
-        console.log(res);
-        console.log(this.smsForm.value);
-      });
-    }
 
-}

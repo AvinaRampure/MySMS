@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    /* font-size: 15px; */
+  }
+
+.side-nav{
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  nav{
+    position: relative;
+    text-decoration: none;
+    top: 0;
+    bottom: 0;
+    height: 140vh;
+    left: 0;
+    background: linear-gradient(90deg, #0b1324 0%, #182848 100%);
+    width: 260px;
+    border-right: 2px solid black;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  .theme-dark #side-nav {
+    background-color: #293541;
+    color: #cdd0d8;
+  }
+  
+  .sidebar-widget{
+    margin-top: 3rem;
+    color: aliceblue;
+    text-align: center;
+  }
+  
+  .logo{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+  }
+  .logo span{
+    font-weight: bold;
+    padding-left: 1px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .ul{
+    text-decoration: none;
+  }
+  a{
+    position: relative;
+    color:white;
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+    text-decoration: none;
+  }
+  .sidebar:hover{
+    background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+    text-decoration: none;
+    color: black;
+  }
+  nav .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  nav .fab{
+      position: relative;
+      width: 70px;
+      height: 40px;
+      top: 14px;
+      font-size: 20px;
+      text-align: center;
+    }
+  .nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .nav-item1{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .logout{
+    position: absolute;
+    bottom: 0;
+  }
+  /* 
+  .form-select{
+      margin-left: 3rem;
+      width: 25rem;
+  } */
+  /* .badge{
+    position: relative;
+      top: -29px;
+      left: 85px
+  } */

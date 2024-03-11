@@ -12,6 +12,9 @@
 body{
   background:liwhitesmoke;
 }
+.dt{
+    color: azure;
+}
 
 .card1{
     width: 40rem;
@@ -25,9 +28,21 @@ textarea{
 }
 .card2{
     width: 23rem;
-    height: 20rem;
+    height: 18rem;
     border: 1px solid darkgray;
 }
+.card3{
+    width: 23rem;
+    height: 15rem;
+    border: 1px solid darkgray;
+}
+
+.card4{
+    width: 23rem;
+    height: 18rem;
+    border: 1px solid darkgray;
+}
+
 .insideobj{
   margin-top: -2rem;
 }
