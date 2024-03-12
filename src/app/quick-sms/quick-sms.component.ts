@@ -30,6 +30,7 @@ export class QuickSmsComponent {
   characterCount: number = 0;
   show: boolean=false;
   show1: boolean=false;
+  http: any;
  
 
   // inputText: string = '';
@@ -134,77 +135,77 @@ messageCount(){
 
 }
 
-downloadFile() {
-  // Implement logic to download the .xls file
-  // For example: window.open('http://example.com/download', '_blank');
-}
+// downloadFile() {
+//   // Implement logic to download the .xls file
+//   // For example: window.open('http://example.com/download', '_blank');
+// }
 
-onFileSelected(event: any) {
-  const file: File = event.target.files[0];
-  if (file) {
-    if (file.name.endsWith('.xls')) {
-      console.log('Selected file:', file.name);
-    } else {
-      console.error('Invalid file format. Please select a .xls file.');
-    }
-  }
-}
+// onFileSelected(event: any) {
+//   const file: File = event.target.files[0];
+//   if (file) {
+//     if (file.name.endsWith('.xls')) {
+//       console.log('Selected file:', file.name);
+//     } else {
+//       console.error('Invalid file format. Please select a .xls file.');
+//     }
+//   }
+// }
 
-groups = [
-  { id: 4144, name: 'poo', count: 2, selected: false },
-  { id: 4146, name: 'test', count: 0, selected: false }
+// groups = [
+//   { id: 4144, name: 'poo', count: 2, selected: false },
+//   { id: 4146, name: 'test', count: 0, selected: false }
 
-];
-selectAllGroups(event: any) {
-  const isChecked = event.target.checked;
-  this.groups.forEach(group => group.selected = isChecked);
-}
+// ];
+// selectAllGroups(event: any) {
+//   const isChecked = event.target.checked;
+//   this.groups.forEach(group => group.selected = isChecked);
+// }
 // selectAllGroups(checked: boolean) { 
 //   this.groups.forEach(group => group.selected = checked); 
 // }
 
-onGroupChange(event: any, group: any) {
+// onGroupChange(event: any, group: any) {
 
-  this.groups.forEach(option => {
-    group.selected = this.selectAllGroups;
-  });
+//   this.groups.forEach(option => {
+//     group.selected = this.selectAllGroups;
+//   });
+// }
+
+
+selectAllCheckbox = false;
+checkbox1 = false;
+checkbox2 = false;
+selectAllChanged() {
+  this.checkbox1 = this.selectAllCheckbox;
+  this.checkbox2 = this.selectAllCheckbox;
 }
 
-
-// selectAllCheckbox = false;
-// checkbox1 = false;
-// checkbox2 = false;
-// selectAllChanged() {
-//   this.checkbox1 = this.selectAllCheckbox;
-//   this.checkbox2 = this.selectAllCheckbox;
-// }
-
-// checkboxChanged() {
-//   if (!this.checkbox1 || !this.checkbox2) {
-//     this.selectAllCheckbox = false;
-//   } else {
-//     this.selectAllCheckbox = true;
-//   }
-// }
-// downloadUrl: string = '';
-//   selectedFile: File | null = null;
+checkboxChanged() {
+  if (!this.checkbox1 || !this.checkbox2) {
+    this.selectAllCheckbox = false;
+  } else {
+    this.selectAllCheckbox = true;
+  }
+}
+downloadUrl: string = '';
+  selectedFile: File | null = null;
 
   
 
-//   onFileSelected(event: any) {
-//     this.selectedFile = event.target.files[0];
-//   }
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
 
-//   uploadFile() {
-//     if (this.selectedFile) {
-//       const formData: FormData = new FormData();
-//       formData.append('file', this.selectedFile, this.selectedFile.name);
+  uploadFile() {
+    if (this.selectedFile) {
+      const formData: FormData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile.name);
 
-//       this.http.post('http://your-upload-endpoint', formData).subscribe((response: any) => {
-//         this.downloadUrl = response.downloadUrl; 
-//       });
-//     }
-//   }
+      this.http.post('http://your-upload-endpoint', formData).subscribe((response: any) => {
+        this.downloadUrl = response.downloadUrl; 
+      });
+    }
+  }
 
 
 onSubmit(){
