@@ -85,12 +85,12 @@
             <label>Change Theme</label>
             <br>
             <div class="btn-group" data-toggle="buttons" id="theme-switcher">
-                <label class="btn active" style="color: white;">
-                    <input type="radio" name="theme-switcher" data-theme="bright"> Bright
+                <label class="btn" [ngClass]="{'active': selectedTheme === 'bright'}" (click)="changeTheme('bright')" style="color: white;">
+                    <input type="radio" name="theme-switcher"> Bright
 
                 </label>
-                <label class="btn" style="color: white;">
-                    <input type="radio" name="theme-switcher" data-theme="dark">Dark
+                <label class="btn" [ngClass]="{'active': selectedTheme === 'dark'}" (click)="changeTheme('dark')" style="color: white;">
+                    <input type="radio" name="theme-switcher">Dark
 
                 </label>
             </div>

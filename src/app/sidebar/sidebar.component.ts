@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  selectedTheme: string = 'bright'; // Default theme
+
+  changeTheme(theme: string) {
+    this.selectedTheme = theme;
+  }
+
 }

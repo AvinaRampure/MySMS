@@ -51,6 +51,18 @@
     /* display: flex;
     position: relative; */
     background: linear-gradient(90deg, #0b1324 0%, #253d6e 100%);
+    color: white;
+    border-radius: 5px;
+    
+}
+
+.dropdown-item{
+    background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+    color: black;
+}
+
+.dropdown-item :hover{
+    background-color: #515ada;
 }
 
   .header-icons{
@@ -62,12 +74,13 @@
     /* margin-right: 2rem; */
     cursor: pointer;
     position: relative;
-    width: 70px;
+    width: 40px;
     height: 40px;
     top: 14px;
     font-size: 18px;
     text-align: center;
   }
+
   /* .header-icons .account{
     width: 130px;
     display: flex;

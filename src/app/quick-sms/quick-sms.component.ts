@@ -18,17 +18,18 @@ export class QuickSmsComponent {
   mobcount: any;
   validMobCount= 0;
   invalidMobCount=0;
+  checkBoxClr: boolean=false;
   mobControl = new FormControl('', [Validators.required]);
   msglength: any;
   textlength: any;
   limit: any=0;
   creditcount: any;
 
-  // CurrentDate=new Date(); 
-
   inputText: string = '';
   wordCount: number = 0;
   characterCount: number = 0;
+  show: boolean=false;
+  show1: boolean=false;
  
 
   // inputText: string = '';
@@ -47,49 +48,43 @@ export class QuickSmsComponent {
         this.invalidMobCount++;
       }
     });
+
+    this.creditcount=this.validMobCount*this.limit;
     
   }
 
-  clearText(event: any) {
-    if (event.target.checked) {
-      // Clear the textarea by resetting the FormControl value
-      this.mobControl.reset('');
-      // Reset the counters
-      this.validMobCount = 0;
-      this.invalidMobCount = 0;
-    }
+
+  checkBoxFun(){
+    this.checkBoxClr=true
+    this.smsForm.patchValue({
+      mob:''
+    })
   }
 
-  onMouseOver(){
-    this.msglength=this.smsForm.controls['msg']
-    console.log(this.msglength.value.length);
-    this.textlength=this.msglength.value.length
+messageCount(){
+    // this.msglength=this.smsForm.controls['msg']
+    // console.log(this.msglength.value.length);
+    // this.textlength=this.msglength.value.length
 
-    if(this.textlength<160)
-    {
-      this.limit=1;
-    }
-    else if(this.textlength %160==0){
-      let temp=this.textlength/160;
-      this.limit=Math.floor(temp);
-    }
-    else{
-      let temp=this.textlength/160
-      this.limit=Math.floor(temp)+1;
-    }
+    this.smsForm.get('msg')!.valueChanges.subscribe(value=>{
+      this.textlength=value.length;
+      if(this.textlength<160)
+      {
+        this.limit=1;
+      }
+      else if(this.textlength %160==0){
+        let temp=this.textlength/160;
+        this.limit=Math.floor(temp);
+      }
+      else{
+        let temp=this.textlength/160
+        this.limit=Math.floor(temp)+1;
+      }
+  
+      this.creditcount=this.validMobCount*this.limit;
+    })
 
-    this.creditcount=this.validMobCount*this.limit;
   }
-  // countWords() {
-  //   // Trim whitespace from the beginning and end of the text
-  //   let trimmedText = this.inputText.trim();
-  //   // Split the text into an array of words
-  //   let words = trimmedText.split(/\s+/);
-  //   // Count the number of words
-  //   this.wordCount = words.length;
-  //   // Count the total number of characters
-  //   this.characterCount = trimmedText.length;
-  // }
 
   calculateCharacterCount(): void {
     this.characterCount = this.inputText.length;
@@ -139,6 +134,79 @@ export class QuickSmsComponent {
 
 }
 
+downloadFile() {
+  // Implement logic to download the .xls file
+  // For example: window.open('http://example.com/download', '_blank');
+}
+
+onFileSelected(event: any) {
+  const file: File = event.target.files[0];
+  if (file) {
+    if (file.name.endsWith('.xls')) {
+      console.log('Selected file:', file.name);
+    } else {
+      console.error('Invalid file format. Please select a .xls file.');
+    }
+  }
+}
+
+groups = [
+  { id: 4144, name: 'poo', count: 2, selected: false },
+  { id: 4146, name: 'test', count: 0, selected: false }
+
+];
+selectAllGroups(event: any) {
+  const isChecked = event.target.checked;
+  this.groups.forEach(group => group.selected = isChecked);
+}
+// selectAllGroups(checked: boolean) { 
+//   this.groups.forEach(group => group.selected = checked); 
+// }
+
+onGroupChange(event: any, group: any) {
+
+  this.groups.forEach(option => {
+    group.selected = this.selectAllGroups;
+  });
+}
+
+
+// selectAllCheckbox = false;
+// checkbox1 = false;
+// checkbox2 = false;
+// selectAllChanged() {
+//   this.checkbox1 = this.selectAllCheckbox;
+//   this.checkbox2 = this.selectAllCheckbox;
+// }
+
+// checkboxChanged() {
+//   if (!this.checkbox1 || !this.checkbox2) {
+//     this.selectAllCheckbox = false;
+//   } else {
+//     this.selectAllCheckbox = true;
+//   }
+// }
+// downloadUrl: string = '';
+//   selectedFile: File | null = null;
+
+  
+
+//   onFileSelected(event: any) {
+//     this.selectedFile = event.target.files[0];
+//   }
+
+//   uploadFile() {
+//     if (this.selectedFile) {
+//       const formData: FormData = new FormData();
+//       formData.append('file', this.selectedFile, this.selectedFile.name);
+
+//       this.http.post('http://your-upload-endpoint', formData).subscribe((response: any) => {
+//         this.downloadUrl = response.downloadUrl; 
+//       });
+//     }
+//   }
+
+
 onSubmit(){
 
   this.submitted=true;
@@ -162,5 +230,13 @@ onSubmit(){
       console.log(res);
   }
   })
+}
+
+showOption(){
+  this.show=!this.show
+}
+
+showChatbot(){
+  this.show1=!this.show1
 }
 }

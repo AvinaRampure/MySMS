@@ -26,20 +26,45 @@ textarea{
     margin-left: 20px;
     margin-right: 40px;
 }
-.card2{
+/* .card2{
     width: 23rem;
     height: 18rem;
     border: 1px solid darkgray;
-}
-.card3{
+} */
+
+.maxheight{
+    height: 16rem;
     width: 23rem;
-    height: 15rem;
     border: 1px solid darkgray;
 }
 
+.minheight{
+    height: 6rem;
+    width: 23rem;
+    border: 1px solid darkgray;
+}
+
+.maxheight1{
+    height: 16rem;
+    width: 23rem;
+    border: 1px solid darkgray;
+}
+
+.minheight1{
+    height: 6rem;
+    width: 23rem;
+    border: 1px solid darkgray;
+}
+
+/* .card3{
+    width: 23rem;
+    height: 16rem;
+    border: 1px solid darkgray;
+} */
+
 .card4{
     width: 23rem;
-    height: 18rem;
+    height: 16rem;
     border: 1px solid darkgray;
 }
 
