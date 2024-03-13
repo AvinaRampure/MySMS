@@ -29,10 +29,17 @@ export class QuickSmsComponent {
   inputText: string = '';
   wordCount: number = 0;
   characterCount: number = 0;
+<<<<<<< HEAD
   show: boolean = false;
   show1: boolean = false;
   show2: boolean = false;
   http: any;
+=======
+  show: boolean=false;
+  show1: boolean=false;
+  http: any;
+ 
+>>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
 
 
   mobileNoCount() {
@@ -136,6 +143,7 @@ export class QuickSmsComponent {
       msg: message
     });
 
+<<<<<<< HEAD
   }
 
   //schedule
@@ -220,6 +228,89 @@ private updateSelectedPhoneNumbers() {
       this.selectedPhoneNumbers = [...this.testPhoneNumbers];
   } else {
       this.selectedPhoneNumbers = [];
+=======
+}
+
+// downloadFile() {
+//   // Implement logic to download the .xls file
+//   // For example: window.open('http://example.com/download', '_blank');
+// }
+
+// onFileSelected(event: any) {
+//   const file: File = event.target.files[0];
+//   if (file) {
+//     if (file.name.endsWith('.xls')) {
+//       console.log('Selected file:', file.name);
+//     } else {
+//       console.error('Invalid file format. Please select a .xls file.');
+//     }
+//   }
+// }
+
+// groups = [
+//   { id: 4144, name: 'poo', count: 2, selected: false },
+//   { id: 4146, name: 'test', count: 0, selected: false }
+
+// ];
+// selectAllGroups(event: any) {
+//   const isChecked = event.target.checked;
+//   this.groups.forEach(group => group.selected = isChecked);
+// }
+// selectAllGroups(checked: boolean) { 
+//   this.groups.forEach(group => group.selected = checked); 
+// }
+
+// onGroupChange(event: any, group: any) {
+
+//   this.groups.forEach(option => {
+//     group.selected = this.selectAllGroups;
+//   });
+// }
+
+
+selectAllCheckbox = false;
+checkbox1 = false;
+checkbox2 = false;
+selectAllChanged() {
+  this.checkbox1 = this.selectAllCheckbox;
+  this.checkbox2 = this.selectAllCheckbox;
+}
+
+checkboxChanged() {
+  if (!this.checkbox1 || !this.checkbox2) {
+    this.selectAllCheckbox = false;
+  } else {
+    this.selectAllCheckbox = true;
+  }
+}
+downloadUrl: string = '';
+  selectedFile: File | null = null;
+
+  
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadFile() {
+    if (this.selectedFile) {
+      const formData: FormData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+
+      this.http.post('http://your-upload-endpoint', formData).subscribe((response: any) => {
+        this.downloadUrl = response.downloadUrl; 
+      });
+    }
+  }
+
+
+onSubmit(){
+
+  this.submitted=true;
+  if(this.smsForm.invalid){
+    alert('Please check all fileds')
+    return;
+>>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
   }
 }
 
