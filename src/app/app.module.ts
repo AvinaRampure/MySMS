@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { QuickSmsComponent } from './quick-sms/quick-sms.component';
-
+import { NgModel } from '@angular/forms';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { QuickSmsComponent } from './quick-sms/quick-sms.component';
     DashboardComponent,
     HeaderComponent,
     SidebarComponent,
-    QuickSmsComponent
+    QuickSmsComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { QuickSmsComponent } from './quick-sms/quick-sms.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -38,7 +38,7 @@
                             <label id="label" for="exampleFormControlTextarea1" class="form-label">Mobile No</label>
                             <textarea class="form-control col-9 mx-4" (keydown.enter)="mobileNoCount()" formControlName="mob"
                                 placeholder="you can send SMS in batches upto 500 at a time"
-                                id="exampleFormControlTextarea1" rows="3"></textarea>                                
+                                id="exampleFormControlTextarea1" rows="3" [(ngModel)]="selectedPhoneNumbers"></textarea>                                
                         </div>
                         <span class="badge badge-secondary" style="position: relative;
                             top: -23px;left: 91px">Valid MobileCount: {{ validMobCount }}
@@ -68,7 +68,7 @@
                             </label>
                         </div>
                         <div class="mb-4 d-flex">
-                            <label id="label" for="exampleFormControlTextarea1" class="form-label">Message</label>
+                            <label id="label" for="exampleFormControlTextarea1"  class="form-label">Message</label>
                             <textarea class="form-control col-9 mx-4" formControlName="msg"
                                 id="exampleFormControlTextarea1" rows="3"></textarea>
                             <br>
@@ -84,9 +84,34 @@
                         <br>
                     </div>
                     <hr>
+                    <div class="schedule">                        
+                               <div class="schedule-checkbox">
+                                   <input type="checkbox" id="showSchedule" name="showSchedule" [(ngModel)]="showSchedule" (change)="toggleSchedule()">
+                                   <label for="showSchedule">Schedule</label>
+                               </div>
+                            <!--  -->
+                               <!-- <br> -->
+                               <div class="middle">
+                               <div class="schedule-fields" *ngIf="showSchedule">
+                                   <div class="schedule-field">
+                                       <label for="startDatePicker" style="font-weight: bold;">Start Date:</label>
+                                       <input type="date" id="startDatePicker" name="startDatePicker" [(ngModel)]="selectedDate" (click)="openDatePicker()">
+                                   </div>
+                                   <div class="schedule-field">
+                                       <label for="startTimePicker" style="font-weight: bold;">Start Time:</label>
+                                       <input type="time" id="startTimePicker" name="startTimePicker" [(ngModel)]="selectedTime" (click)="openTimePicker()">
+                                   </div>
+                                </div>
+                               </div>
+                                <!--  -->
+                                <div class="col-md1 align-right ">
+                                    <button class="button"  type="submit" >Confirm</button> 
+                                </div>                         
+                    </div>
                     <div class="card-footer" style="text-align: right;">
                         <div>
                             <br>
+                            
                             <div class="mb-4 d-flex">
                                 <label id="label" for="exampleFormControlTextarea1" class="form-label">Test
                                     SMS</label>
@@ -100,8 +125,7 @@
                     </div>
                 </div>
 
-                <div class="card   mx-2 mt-3">
-                    
+                <div class="card   mx-2 mt-3">                   
                     <div class="card card2 mx-2 mt-3" [ngClass]="show? 'maxheight':'minheight'">
                         <h5 class="card-header"
                             style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
@@ -136,27 +160,23 @@
                                             <div class="tab-content">
                                                 <div class="tab-pane" id="tab_feed_1">
                                                     <div class="form-horizontal row-border" id="validate-1" action="#" novalidate="novalidate">
+
                                                         <div class="form-group">
                                                             <br>
                                                             <div class="col-md-12">
-                                                                <input type="checkbox"  (change)="selectAllGroups($event)" id="selectAllGroups">
-                                                                <label for="selectAllGroups">Select All</label>
+                                                                <input id="selectAll" type="checkbox" [checked]="selectAllCheckbox" (change)="selectAllChanged()" >
+                                                                <label id="slctall" for="selectAll">Select All</label>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <table id="ContentPlaceHolder1_chkGroups">
-                                                                    <tbody>
-                                                                        <tr *ngFor="let group of groups">
-                                                                            <td>
-                                                                                <input type="checkbox" id="group_{{group.id}}" name="group_{{group.id}}" 
-                                                                                       [(ngModel)]="group.selected" 
-                                                                                       (change)="onGroupChange($event, group)">
-                                                                                <label for="group_{{group.id}}">{{group.name}} ({{group.count}})</label>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
+                                                                <input  id="grpidp1" type="checkbox" [checked]="checkbox1" (change)="checkboxChanged()">
+                                                                <label id="grpidp" for="grpidp1">poo(2)</label>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <input  id="grpidt1" type="checkbox" [checked]="checkbox2" (change)="checkboxChanged()">
+                                                                <label id="grpidt" for="grpidt1">test()</label>
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                                 
@@ -165,12 +185,12 @@
                                                         <br>
                                                         <div class="controls">
                                                             Download .xls File Format
-                                                            <a (click)="downloadFile()" style="font-size:Medium;" href="#">Click Here</a>
+                                                            <a  style="font-size:Medium;" href="{{ downloadUrl }}" download="ImportMobileNumber.xls">Click Here</a>
                                                         </div>
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="col-md-12">
-                                                                <input type="file" (change)="onFileSelected($event)" class="form-control">
+                                                                <input type="file"accept=".xls,.txt,.csv" type="file"(change)="onFileSelected($event)" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,16 +217,23 @@
                         <div class="card-body" *ngIf="show1">
                             <select class="form-select col-10 mx-3" formControlName="sender"
                                 aria-label="Default select example">
-                                <option select>select</option>
+                                <!-- <option select>select</option> -->
+                                <option value="">Select the option</option>
+                                <option value="1">Chatbot 1</option>
+                                <option value="2">Chatbot 2</option>
                             </select>
                         </div>
                     </div>
-                    <div class="card card4 mx-2 mt-3">
+                    <div class="card card4 mx-2 mt-3" [ngClass]="show2? 'maxheight1':'minheight1'" >
                         <h5 class="card-header"
                             style="background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);font-size: medium;">
                             <i class="fas fa-bars"></i>
-                            Select Media</h5>
-                        <div class="card-body">
+                            Select Media
+                            <div style="margin-top: -19px;" (click)="showMedia()">
+                                <i class="fas fa-caret-square-down" style="margin-left: 20rem; "></i>
+                            </div>
+                        </h5>
+                        <div class="card-body" *ngIf="show2">
                             <div class="widget-content" style="display: block;">
                                 <div class="tabbable tabbable-custom" id="tabs1">
                                     <ul class="nav nav-tabs" style="display: flex;background-color: lavender;justify-content: center;">

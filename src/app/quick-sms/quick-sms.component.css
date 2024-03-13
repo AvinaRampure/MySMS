@@ -33,7 +33,7 @@ textarea{
 } */
 
 .maxheight{
-    height: 16rem;
+    height: 18rem;
     width: 23rem;
     border: 1px solid darkgray;
 }
@@ -56,17 +56,18 @@ textarea{
     border: 1px solid darkgray;
 }
 
-/* .card3{
-    width: 23rem;
+.maxheight2{
     height: 16rem;
-    border: 1px solid darkgray;
-} */
-
-.card4{
     width: 23rem;
-    height: 16rem;
     border: 1px solid darkgray;
 }
+
+.minheight2{
+    height: 6rem;
+    width: 23rem;
+    border: 1px solid darkgray;
+}
+
 
 .insideobj{
   margin-top: -2rem;
@@ -91,3 +92,43 @@ input[type=text],select,textarea{
     resize: vertical;
 
 }
+.schedule{
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 2em; 
+}
+.schedule-checkbox{
+    margin-left: 5px;
+    width: 6em;
+}
+.schedule-fields{
+    width:28em;
+    display: flex; 
+    /* margin-top: 2rem; */
+    /* margin-left:12px; */
+}
+.schedule{
+    display: -webkit-box;
+    flex-direction: column;
+    height: 2vh;
+}
+.middle{
+ width: 28em;   
+}
+.schedule-field{  
+    margin-left:5px;
+}
+.schedule-field label{  
+    margin-right: 5px;
+}
+.schedule-field input{ 
+    border: 1px solid black;
+}
+
+ .button{
+    background: rgb(30, 30, 44);
+    color: white;
+    border-radius: 2px;
+ }
+
+
