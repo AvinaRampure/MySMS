@@ -13,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { QuickSmsComponent } from './quick-sms/quick-sms.component';
 import { NgModel } from '@angular/forms';
 import { ReportComponent } from './report/report.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReportComponent } from './report/report.component';
     HeaderComponent,
     SidebarComponent,
     QuickSmsComponent,
-    ReportComponent
+    ReportComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

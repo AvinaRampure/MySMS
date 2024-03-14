@@ -1,5 +1,5 @@
-
-    <table style="margin-left: 160px;margin-top: 50px;" class="custom-table">
+<!-- 
+    <table style="margin-left:50px;margin-top: 50px;" class="custom-table">
       <thead class="table">
         <tr>
           <th>Id</th>
@@ -8,19 +8,50 @@
           <th>Message</th>
           <th>MobileNo</th>
           <th>Status</th>
-            
+          <th>Date Time</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of ArrayReport; index as i">  
           <td>{{i + 1 }}</td>
-          <!-- <th scope="row">{{i+1}}</th> -->
+          <th scope="row">{{i+1}}</th> 
           <td>{{item.Success }}</td>
           <td>{{item.ErrorCode }}</td>
           <td>{{item.Message }}</td>
           <td>{{item.MobileNo }}</td>
           <td>{{item.Status }}</td>
+          <td>{{item.datetime}}</td>
         </tr>
       </tbody>
     </table>
+
+    <button class="btn" (click)="downloadExcel()">Download</button> -->
+
+    <table style="margin-left:50px;margin-top: 50px;" class="custom-table">
+        <thead class="table">
+          <tr>
+            <th>Id</th>
+            <th>Success</th>
+            <th>ErrorCode</th>
+            <th>Message</th>
+            <th>MobileNo</th>
+            <th>Status</th>
+            <th>Date Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ArrayReport; index as i">  
+            <td>{{i + 1 }}</td>
+            <!-- <th scope="row">{{i+1}}</th> -->
+            <td>{{item.Success }}</td>
+            <td>{{item.ErrorCode }}</td>
+            <td>{{item.Message }}</td>
+            <td>{{item.MobileNo }}</td>
+            <td>{{item.Status }}</td>
+            <td>{{item.datetime}}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <button class="btn" (click)="downloadExcel()">Download</button>
 

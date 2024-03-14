@@ -1,0 +1,88 @@
+<!-- <div class="display">
+    <p>Last Login: <strong></strong></p>
+</div> -->
+<div>
+    <input type="text"
+        style="width: 70rem;height: 3rem; font-size:16px;text-align: center;background-color: rgb(204, 223, 235);"
+        class="textbox"
+        placeholder="Last Login =>  Date: {{CurrentDate | date: 'MM/dd/yyyy '}}">
+</div>
+<div class="components">
+    <div id="dash" class="campaign">
+        <p>TOTAL CAMPAIGN</p>
+        <p id="three">3</p>
+        <div class="campaignbox">
+            <img id="camimg"src="https://cdn-icons-png.flaticon.com/128/12887/12887924.png" height="20px" width="20px">
+        </div>
+    </div><br>
+    
+    <div id="dash" class="quantity">
+        <p>TOTAL QUANTITY</p>
+        <p id="three">2</p>
+        <div class="quantitybox">
+            <img id="quanimg"src="https://cdn-icons-png.flaticon.com/128/561/561127.png" height="20px" width="20px">
+        </div>
+    </div><br>
+    
+    <div id="dash" class="credit">
+        <p>TOTAL CREDIT</p>
+        <p id="three">5</p>
+        <div class="creditbox">
+            <img id="creditimg"src="https://cdn-icons-png.flaticon.com/128/74/74742.png" height="20px" width="20px">
+        </div>
+    </div>
+</div>
+
+<div class="card card3 " [ngClass]="show? 'maxheight':'minheight'">
+    <h5 class="card-header"
+        style="background: linear-gradient(90deg, #eee3f4 0%, #eeefff 100%);font-size: medium;">
+        <i class="fas fa-bars"></i>
+        Usage Chart
+        <div style="margin-top: -19px;" (click)="showChart()">
+            <i class="fas fa-caret-square-down" style="margin-left: 42rem; "></i>
+        </div>
+    </h5>
+    <div class="card-body" *ngIf="show">
+        <select class="form-select col-10 mx-3" formControlName="sender"
+            aria-label="Default select example">
+            <option id="" value="NUEVAS">NUEVAS</option>     
+        </select>
+<br>
+<br>
+        <div class="widget-content" style="display: block;">
+            <div class="form-horizontal row-border">
+                <div class="form-group">
+                <div class="row mx-md-5">
+
+                    <div class="col-md-5">
+                        <label>Start Date</label>
+                        <div id="picker4" class="input-append">
+                            <input name="ctl00$ContentPlaceHolder1$txtsdate" type="text" value="14-03-2024" id="txtsdate" class="form-control" data-format="dd-MM-yyyy">
+                            <span class="add-on">
+                                <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-5">
+                        <label>End Date</label>
+                        <div id="picker5" class="input-append">
+                            <input name="ctl00$ContentPlaceHolder1$txtedate" type="text" value="14-03-2024" id="txtedate" class="form-control" data-format="dd-MM-yyyy">
+                            <span class="add-on">
+                                <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="col-md-3" style="margin-top: 24px;">                               
+                        <a href="#" class="btn btn-small btn-warning" onclick="getprt();">Show Chart</a>                             
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

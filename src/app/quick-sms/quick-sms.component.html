@@ -36,7 +36,7 @@
                         <br>
                         <div class="mb-4 d-flex">
                             <label id="label" for="exampleFormControlTextarea1" class="form-label">Mobile No</label>
-                            <textarea class="form-control col-9 mx-4" (keydown.enter)="mobileNoCount()" formControlName="mob"
+                            <textarea class="form-control col-9 mx-4"formControlName="mob"
                                 placeholder="you can send SMS in batches upto 500 at a time"
                                 id="exampleFormControlTextarea1" rows="3" [(ngModel)]="selectedPhoneNumbers"></textarea>                                
                         </div>
@@ -91,7 +91,7 @@
                                </div>
                             <!--  -->
                                <!-- <br> -->
-                               <div class="middle">
+                            <div class="middle">
                                <div class="schedule-fields" *ngIf="showSchedule">
                                    <div class="schedule-field">
                                        <label for="startDatePicker" style="font-weight: bold;">Start Date:</label>
@@ -102,7 +102,7 @@
                                        <input type="time" id="startTimePicker" name="startTimePicker" [(ngModel)]="selectedTime" (click)="openTimePicker()">
                                    </div>
                                 </div>
-                               </div>
+                            </div>
                                 <!--  -->
                                 <div class="col-md1 align-right ">
                                     <button class="button"  type="submit" >Confirm</button> 
@@ -164,7 +164,6 @@
                                                         <div class="form-group">
                                                             <br>
                                                             <div class="col-md-12">
-<<<<<<< HEAD
                                                                 <input id="selectAll" type="checkbox" [checked]="selectAllCheckbox" (change)="selectAllChanged()" >
                                                                 <label id="slctall" for="selectAll">Select All</label>
                                                             </div>
@@ -176,42 +175,9 @@
                                                                 <input  id="grpidt1" type="checkbox" [checked]="checkbox2" (change)="checkboxChanged()">
                                                                 <label id="grpidt" for="grpidt1">test()</label>
                                                             </div>
-=======
-                                                                <input type="checkbox"  [(ngModel)]="selectAllCheckbox" (change)="selectAllChanged()" id="selectAllGroups">
-                                                                <label for="selectAllGroups">Select All</label>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <input type="checkbox"  [(ngModel)]="checkbox1" (change)="checkboxChanged()" id="selectAllGroups">
-                                                                <label for="selectAllGroups">poo(2)</label>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <input type="checkbox" [(ngModel)]="checkbox2" (change)="checkboxChanged()">
-                                                                <label for="selectAllGroups">test()</label>
-                                                            </div>
-                                                            <!-- <div class="col-md-12">
-                                                                <table id="ContentPlaceHolder1_chkGroups">
-                                                                    <tbody>
-                                                                        <tr *ngFor="let group of groups">
-                                                                            <td>
-                                                                                <input type="checkbox" id="group_{{group.id}}" name="group_{{group.id}}" 
-                                                                                       [(ngModel)]="group.selected" 
-                                                                                       (change)="onGroupChange($event, group)">
-                                                                                <label for="group_{{group.id}}">{{group.name}} ({{group.count}})</label>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div> -->
->>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
                                                         </div>
                                                         
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="profile">
-                                                    <h6>Download .xls File Format: <a href="{{ downloadUrl }}" download="ImportMobileNumber.xls">Download</a></h6>
-                                                    <input style="width:230px;margin-top: 10px;" accept=".xls,.txt,.csv" type="file" (change)="onFileSelected($event)">
-                                                    <button style="border:none;margin-top: 20px;padding: 5px;background-color: #5dbea3;color: whitesmoke;" 
-                                                    (click)="uploadFile()">Import Contacts</button>
                                                 </div>
                                                 
                                                 <div class="tab-pane active" id="tab_feed_2">
@@ -219,22 +185,12 @@
                                                         <br>
                                                         <div class="controls">
                                                             Download .xls File Format
-<<<<<<< HEAD
                                                             <a  style="font-size:Medium;" href="{{ downloadUrl }}" download="ImportMobileNumber.xls">Click Here</a>
-=======
-                                                            <a  style="font-size:Medium;" href="{{ downloadUrl }}">Click Here</a>
->>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
                                                         </div>
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="col-md-12">
-<<<<<<< HEAD
                                                                 <input type="file"accept=".xls,.txt,.csv" type="file"(change)="onFileSelected($event)" class="form-control">
-=======
-                                                                <input type="file" (change)="onFileSelected($event)" class="form-control">
-                                                                <button style="border:none;margin-top: 20px;padding: 5px;background-color:blueviolet;color: whitesmoke;" 
-                                                    (click)="uploadFile()">Import Contacts</button>
->>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
                                                             </div>
                                                         </div>
                                                     </div>

@@ -1,0 +1,162 @@
+.display{
+    margin:0px auto;
+    margin-top: -906px;
+    margin-right: -1px;
+    text-align:left;
+    border:1px solid transparent;
+    width:1249px;
+    background-color: #d9edf7;
+    color: #31708f;
+    font-family: sans-serif;
+    border-color: #bce8f1;
+  }
+  .display p{
+    margin-left: 10px;
+  }
+  .components{
+    display: flex;
+    margin-left: 80px;
+    margin-top: 30px;
+ 
+  }
+  .campaign{
+      /* border-color:#999; */
+      width:90px;
+      margin: 10px;
+      border-color: #555555;
+  }
+  
+  .campaign p{
+    font-size: 12px;
+    float: right;
+    margin-top: 19px;
+    font-weight: 700;
+    color: #adadad;
+    margin-right: 5px;
+    border-color: #555555;
+  }
+  .campaignbox{
+    border: none;
+    width: 45px;
+    height: 45px;
+    margin-top: 17px;
+    background-color: #f2e610;
+  }
+  #camimg{
+    margin-left: 12px;
+    margin-top: 12px;
+  }
+  .quantity{
+    border-color:#999;
+    height: 20px;
+    width:90px;
+    margin: 10px;
+  }
+  .quantity p{
+    font-size: 12px;
+    float: right;
+    margin-top: 19px;
+    font-weight: 700;
+    color: #adadad;
+    margin-right: 5px;
+  }
+  .quantitybox{
+    border: none;
+    width: 45px;
+    height: 45px;
+    margin-top: 17px;
+    background-color: #ea1e1a;
+  }
+  #quanimg{
+    margin-left: 13px;
+    margin-top: 13px;
+  }
+  
+  .credit{
+    height: 20px;
+    border-color:#999;
+    width:90px;
+    margin: 10px;
+  }
+  .credit p{
+    font-size: 12px;
+    float: right;
+    margin-top: 19px;
+    font-weight: 700;
+    color: #adadad;
+    margin-right: 15px;
+  }
+  .creditbox{
+    border: none;
+    width: 45px;
+    height: 45px;
+    margin-top: 17px;
+    background-color: #4a870a;
+  }
+  #creditimg{
+    margin-left: 12px;
+    margin-top: 12px;
+  }
+  #dash{
+    border:1px solid #999;
+    width: 210px;
+    height: 80px;
+    padding-left: 30px;
+    
+  }
+
+  #three{
+ position: relative;
+ top:25px;
+ left:100px;
+ font-size: 25px;
+ color: #555555;
+  }
+  /* .quantity{
+    border:1px solid black;
+    width:90px;
+  }
+  .credit{
+    border:1px solid black;
+    width:90px;
+  } */
+  .card{
+    margin-left: 90px;
+    width: 64%;
+    border: 1px solid black;
+    height: 400px;
+    border-color: #999;
+  }
+  #card{
+    padding: 10px;
+    width:100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+  }
+  .label{
+     position: relative;
+     top:16px;
+     left:5px;
+     font-family: sans-serif;
+     color: #555555;
+     font-size: 14px;
+     font-weight: bold;
+     font-size: 15px;
+  }
+  #option{
+    padding:20px;
+  }
+
+  .maxheight{
+    height: 23rem;
+    width: 45rem;
+    border: 1px solid darkgray;
+}
+
+.minheight{
+    height: 10rem;
+    width: 45rem;
+    border: 1px solid darkgray;
+}

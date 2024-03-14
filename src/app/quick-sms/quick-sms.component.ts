@@ -25,24 +25,24 @@ export class QuickSmsComponent {
   textlength: any;
   limit: any = 0;
   creditcount: any;
+  message: string= '';
 
   inputText: string = '';
   wordCount: number = 0;
   characterCount: number = 0;
-<<<<<<< HEAD
   show: boolean = false;
   show1: boolean = false;
   show2: boolean = false;
   http: any;
-=======
-  show: boolean=false;
-  show1: boolean=false;
-  http: any;
- 
->>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
 
 
-  mobileNoCount() {
+  selectedTheme: string = 'bright'; // Default theme
+
+  changeTheme(theme: string) {
+    this.selectedTheme = theme;
+  }
+
+  mobileNoCount(value:string):void {
     const mobileNumbers = this.smsForm.controls['mob'].value.split(',').map((number: any) => number.trim());
 
     this.validMobCount = 0;
@@ -115,8 +115,14 @@ export class QuickSmsComponent {
       templateid: [''],
       mob: [''],
       msg: [''],
-      coding: ['1']
+      coding: ['1'],
+    
     });
+
+    
+    this.smsForm.get('mob')!.valueChanges.subscribe(value=>{
+      this.mobileNoCount(value)
+    })
   }
 
   changevalue(event: Event): void {
@@ -143,7 +149,6 @@ export class QuickSmsComponent {
       msg: message
     });
 
-<<<<<<< HEAD
   }
 
   //schedule
@@ -172,7 +177,7 @@ testPhoneNumbers: string[] = ['7038550566', '9960576419,9420930016'];
 selectedPhoneNumbers: string[] = [];
 
 selectAllChanged() {
-   
+   debugger;
     this.selectAllCheckbox = !this.selectAllCheckbox;  
     this.checkbox1 = this.selectAllCheckbox;
     this.checkbox2 = this.selectAllCheckbox;
@@ -184,40 +189,16 @@ selectAllChanged() {
 
 checkboxChanged() {
   debugger;
-    if (this.checkbox1 || this.checkbox2) {
+  this.checkbox1 =!this.checkbox1;
+  this.checkbox2 = !this.checkbox1;
+    if (this.checkbox1 && this.checkbox2) {
         this.selectAllCheckbox = true;
     } else {
         this.selectAllCheckbox = false;
     }
+
     this.updateSelectedPhoneNumbers();
 }
-
-// selectAllCheckbox: boolean = false;
-// checkbox1: boolean = false;
-// checkbox2: boolean = false;
-// poolPhoneNumbers: string[] = ['9309580344', '8412819113']; 
-// testPhoneNumbers: string[] = ['7038550566', '9960576419,9420930016']; 
-// selectedPhoneNumbers: string[] = []; 
-
-// selectAllChanged() {
-//   if (this.selectAllCheckbox) {
-//     this.checkbox1 = true;
-//     this.checkbox2 = true;
-//   } else {
-//     this.checkbox1 = false;
-//     this.checkbox2 = false;
-//   }
-//   this.updateSelectedPhoneNumbers();
-// }
-
-// checkboxChanged() {
-//   if (this.checkbox1 && this.checkbox2) {
-//       this.selectAllCheckbox = true;
-//   } else {
-//       this.selectAllCheckbox = false;
-//   }
-//   this.updateSelectedPhoneNumbers();
-// }
 
 private updateSelectedPhoneNumbers() {
   if (this.checkbox1 && this.checkbox2) {
@@ -228,92 +209,8 @@ private updateSelectedPhoneNumbers() {
       this.selectedPhoneNumbers = [...this.testPhoneNumbers];
   } else {
       this.selectedPhoneNumbers = [];
-=======
-}
-
-// downloadFile() {
-//   // Implement logic to download the .xls file
-//   // For example: window.open('http://example.com/download', '_blank');
-// }
-
-// onFileSelected(event: any) {
-//   const file: File = event.target.files[0];
-//   if (file) {
-//     if (file.name.endsWith('.xls')) {
-//       console.log('Selected file:', file.name);
-//     } else {
-//       console.error('Invalid file format. Please select a .xls file.');
-//     }
-//   }
-// }
-
-// groups = [
-//   { id: 4144, name: 'poo', count: 2, selected: false },
-//   { id: 4146, name: 'test', count: 0, selected: false }
-
-// ];
-// selectAllGroups(event: any) {
-//   const isChecked = event.target.checked;
-//   this.groups.forEach(group => group.selected = isChecked);
-// }
-// selectAllGroups(checked: boolean) { 
-//   this.groups.forEach(group => group.selected = checked); 
-// }
-
-// onGroupChange(event: any, group: any) {
-
-//   this.groups.forEach(option => {
-//     group.selected = this.selectAllGroups;
-//   });
-// }
-
-
-selectAllCheckbox = false;
-checkbox1 = false;
-checkbox2 = false;
-selectAllChanged() {
-  this.checkbox1 = this.selectAllCheckbox;
-  this.checkbox2 = this.selectAllCheckbox;
-}
-
-checkboxChanged() {
-  if (!this.checkbox1 || !this.checkbox2) {
-    this.selectAllCheckbox = false;
-  } else {
-    this.selectAllCheckbox = true;
   }
 }
-downloadUrl: string = '';
-  selectedFile: File | null = null;
-
-  
-
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  uploadFile() {
-    if (this.selectedFile) {
-      const formData: FormData = new FormData();
-      formData.append('file', this.selectedFile, this.selectedFile.name);
-
-      this.http.post('http://your-upload-endpoint', formData).subscribe((response: any) => {
-        this.downloadUrl = response.downloadUrl; 
-      });
-    }
-  }
-
-
-onSubmit(){
-
-  this.submitted=true;
-  if(this.smsForm.invalid){
-    alert('Please check all fileds')
-    return;
->>>>>>> b22d11a85e8ff560539a515971c96c90b3d3de12
-  }
-}
-
 
 
   downloadUrl: string = '';
@@ -362,6 +259,9 @@ onSubmit(){
         localStorage.setItem('count', (this.service.userName));
 
         this.service.ResArray=res;
+        res.datetime = new Date; 
+        res.Message = this.smsForm.value.msg;
+        res.Credit = this.creditcount;
         this.service.postArrayAPI(res).subscribe({
           next:(res:any)=>{
             this.router.navigate(['report'])
@@ -387,4 +287,5 @@ onSubmit(){
   showMedia() {
     this.show2 = !this.show2
   }
+
 }
