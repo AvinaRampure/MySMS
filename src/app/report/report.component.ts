@@ -14,6 +14,8 @@ export class ReportComponent implements OnInit {
 
   columns: string[]=[];
   response:boolean=false;
+  isContainer2Visible:boolean=false;
+  selectedItemIndex: number | null = null; // declare the property
 
   constructor(private service: SMSServiceService){}
 
@@ -31,9 +33,14 @@ export class ReportComponent implements OnInit {
     })
   }
 
-  toggleVisibility(){
-    this.response=!this.response;
+  toggleVisibility(index: number | null){
+    // this.response=!this.response;
+    this.selectedItemIndex = index;
+    this.isContainer2Visible = !this.isContainer2Visible; // update the method to accept and use the index
   }
+
+// toggleVisibility(index: number | null) {
+// }
 
   downloadExcel(): void {
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.ArrayReport);

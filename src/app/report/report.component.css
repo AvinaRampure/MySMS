@@ -1,42 +1,70 @@
-
-
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 2px 4px 3px 3px rgb(96, 95, 95);
-  }
-  
-  .custom-table th{
-    padding: 8px;
-    border: 1px solid #0f0d0d;
-  }
-  .custom-table td {
-    padding: 8px;
-    border: 1px solid #383333;
-  }
-  
-  .custom-table th {
-    background: linear-gradient(90deg, #0b1324 0%, #182848 100%);
-    color:white;
-    font-weight: bold;
-    text-align:center;
-    height:18px;
-  }
-  
-  .custom-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .custom-table tbody tr:hover {
-    background-color: #f2f2f2;
-  }
-  
-  .btn{
-    background-color: #182848;
-    color:white;
-    margin-left: 35rem;
+.response{
+justify-content: center;
+margin-left: 100px;
+margin-top: 39px;
+margin-bottom: 20px;
+height: 250px;
+}
+  h3{
+    color:black;
+    font: bold;
+    text-align: center;
+    text-shadow: 2px 2px #1711c4;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
     margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.custom-table1{
+  justify-content: center;
+  border: 1px solid darkgray;
+  margin-left: 20px;
+  margin-right: 15px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  height: 400px;
   }
-  .btn:hover{
-    color: aquamarine;
-  }
+
+.custom-table2{
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: center;
+}
+
+th{
+    width:10vw;
+    border: 2px solid black;
+    text-align: center;
+    background: linear-gradient(90deg, #0b1324 0%, #182848 100%);
+    font-size: 16px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 13rem;
+}
+td{
+    border: 2px solid black;
+    text-align: center;
+    color: black;
+
+    /* padding-top: 2px;
+    padding-bottom: 2px; */
+}
+tr:hover {
+    background-color:lavender; 
+}
+button{
+    height: 35px;
+    position: relative;
+    left: 433px;
+    background-color: #0b1324;
+    margin-top: 35px;
+    left: 734px;
+}
+button:hover{
+  background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+  color: black;
+}
+

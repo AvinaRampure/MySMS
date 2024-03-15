@@ -1,65 +1,35 @@
-<!-- 
-    <table style="margin-left:50px;margin-top: 50px;" class="custom-table">
-      <thead class="table">
-        <tr>
-          <th>Id</th>
-          <th>Success</th>
-          <th>ErrorCode</th>
-          <th>Message</th>
-          <th>MobileNo</th>
-          <th>Status</th>
-          <th>Date Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of ArrayReport; index as i">  
-          <td>{{i + 1 }}</td>
-          <th scope="row">{{i+1}}</th> 
-          <td>{{item.Success }}</td>
-          <td>{{item.ErrorCode }}</td>
-          <td>{{item.Message }}</td>
-          <td>{{item.MobileNo }}</td>
-          <td>{{item.Status }}</td>
-          <td>{{item.datetime}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <button class="btn" (click)="downloadExcel()">Download</button> -->
-
-    <table style="margin-left:50px;margin-top: 50px;" class="custom-table">
-      <h2>View Report</h2>
-        <thead class="table">
-          <tr>
-            <th>Id</th>
-            <th>Date Time</th>
-            <!-- <th>Success</th>
-            <th>ErrorCode</th> -->
-            <th>Message</th>
-            <th>MobileNo</th>
-            <th>Credits</th>
-            <th>View</th>
-          </tr>
+<div class="dashboard2" *ngIf="!isContainer2Visible">
+  <h3>SMS Report</h3>
+      <table class="custom-table1">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>DateTime</th>
+                <th>Message</th>
+                <th>No of SMS</th>
+                <th>Credits</th>
+                <th>View</th>
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of ArrayReport; index as i">  
-            <td>{{i + 1 }}</td>
-            <!-- <th scope="row">{{i+1}}</th> -->
-            <!-- <td>{{item.Success }}</td>
-            <td>{{item.ErrorCode }}</td> -->
-            <td>{{item.datetime}}</td>
-            <td>{{item.Message }}</td>
-            <td>{{item.MobileNo }}</td>
-            <td>{{item.Credit }}</td>
-            <td><button (click)="toggleVisibility()"></button> </td>
-          </tr>
+            <tr *ngFor="let item of ArrayReport; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.datetime}}</td>
+                <td>{{ item.Message }}</td>
+                <td>{{ item.SmsNo}}</td>
+                <td>{{ item.Credit}}</td>
+                <td><i class="fas fa-eye" (click)="toggleVisibility(i)"></i></td>
+            </tr>
         </tbody>
-      </table>
+    </table>
+          <button class="btn" (click)="downloadExcel()" style="color: white;left: 501px;">Download</button>
+  </div>
 
-      <div class="response" *ngIf="selectedItemIndex!==null">
+      <div class="response" *ngIf="selectedItemIndex !== null && isContainer2Visible" 
+      [ngClass]="{'container2': isContainer2Visible,'d-none':!isContainer2Visible}">
         <div>
-          <table class="custom-table">
-            <h3>SMS Response</h3>
+          <h3>SMS Response</h3>
+          <table class="custom-table2">
               <thead>
                   <tr>
                       <th>DateTime</th>
@@ -73,17 +43,15 @@
                       <td>{{ ArrayReport[selectedItemIndex].datetime}}</td>
                       <td>{{ ArrayReport[selectedItemIndex].MobileNo}}</td>
                       
-                      <td>{{ ArrayReport[selectedItemIndex].ErrorCode }}</td>
+                      <td>{{ ArrayReport[selectedItemIndex].Sender }}</td>
                       <td>{{ ArrayReport[selectedItemIndex].Status}}</td>
                   </tr>
               </tbody>
-          </table>
-        
-      </div>
-      
-      </div>
-  
-      <button class="btn" (click)="downloadExcel()">Download</button>
+          </table>  
+          <button class="btn btn-primary" (click)="toggleVisibility(null)">Back</button>     
+      </div>      
+      </div> 
+
 
       
 

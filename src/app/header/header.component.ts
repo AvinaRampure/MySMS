@@ -19,7 +19,7 @@ export class HeaderComponent {
 
   inputText: string = '';
   characterCount: number = 0;
-  UserName: any;
+  UserName='demotr';
   count: any;
 
   smsForm! :FormGroup;
@@ -33,11 +33,9 @@ export class HeaderComponent {
   }
 
   ngOnInit(){
-    this.service.localdata();
     this.loadcount()
   }
   loadcount(){
-    this.UserName=this.service.userName
     this.service.getBalance(this.UserName).subscribe({
       next:((res:any)=>{
         this.count=res.SMSBalance

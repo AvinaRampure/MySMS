@@ -7,6 +7,7 @@ import { ThemeService } from '../theme.service';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { NgModel } from '@angular/forms';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-quick-sms',
@@ -26,6 +27,7 @@ export class QuickSmsComponent {
   limit: any = 0;
   creditcount: any;
   message: string= '';
+  sender: string='';
 
   inputText: string = '';
   wordCount: number = 0;
@@ -58,6 +60,32 @@ export class QuickSmsComponent {
 
     this.creditcount = this.validMobCount * this.limit;
 
+  }
+
+  allExcelNumbers: any;
+
+  onFileSelected(event:any):void{
+    const file: File = event.target.files[0];
+    const reader: FileReader = new FileReader();
+
+    reader.onload = (e:any)=>{
+      const binaryString: string=e.target.result;
+      const workbook: XLSX.WorkBook = XLSX.read(binaryString,{type: 'binary'});
+      const sheetName: string = workbook.SheetNames[0];
+      const worksheet: XLSX.WorkSheet = workbook.Sheets[sheetName];
+      const contacts: any[]=XLSX.utils.sheet_to_json(worksheet, {header: 1});
+      const  mobileNumbers: string[] =contacts.map(row => row[0]);
+
+      const mobileNumbersString: string=mobileNumbers.join('\n');
+
+
+
+      this.allExcelNumbers=mobileNumbersString
+    };
+    reader.readAsBinaryString(file);
+  }
+  importContacts():void{
+    this.smsForm.patchValue({mob:this.allExcelNumbers});
   }
 
 
@@ -216,17 +244,17 @@ private updateSelectedPhoneNumbers() {
   downloadUrl: string = '';
   selectedFile: File | null = null;
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-    const file: File = event.target.files[0];
-    if (file) {
-      if (file.name.endsWith('.xls')) {
-        console.log('Selected file:', file.name);
-      } else {
-        console.error('Invalid file format. Please select a .xls file.');
-      }
-    }
-  }
+  // onFileSelected(event: any) {
+  //   this.selectedFile = event.target.files[0];
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     if (file.name.endsWith('.xls')) {
+  //       console.log('Selected file:', file.name);
+  //     } else {
+  //       console.error('Invalid file format. Please select a .xls file.');
+  //     }
+  //   }
+  // }
 
   uploadFile() {
     if (this.selectedFile) {
@@ -238,6 +266,7 @@ private updateSelectedPhoneNumbers() {
       });
     }
   }
+
 
 
   onSubmit() {
@@ -262,6 +291,8 @@ private updateSelectedPhoneNumbers() {
         res.datetime = new Date; 
         res.Message = this.smsForm.value.msg;
         res.Credit = this.creditcount;
+        res.Sender=this.smsForm.controls['sender'].value;
+        res.SmsNo = this.validMobCount;
         this.service.postArrayAPI(res).subscribe({
           next:(res:any)=>{
             this.router.navigate(['report'])
