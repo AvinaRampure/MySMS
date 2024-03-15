@@ -12,6 +12,9 @@ export class ReportComponent implements OnInit {
 
   ArrayReport: any=[];
 
+  columns: string[]=[];
+  response:boolean=false;
+
   constructor(private service: SMSServiceService){}
 
   ngOnInit(){
@@ -26,6 +29,10 @@ export class ReportComponent implements OnInit {
         this.ArrayReport=res
       }
     })
+  }
+
+  toggleVisibility(){
+    this.response=!this.response;
   }
 
   downloadExcel(): void {

@@ -28,30 +28,62 @@
     <button class="btn" (click)="downloadExcel()">Download</button> -->
 
     <table style="margin-left:50px;margin-top: 50px;" class="custom-table">
+      <h2>View Report</h2>
         <thead class="table">
           <tr>
             <th>Id</th>
-            <th>Success</th>
-            <th>ErrorCode</th>
+            <th>Date Time</th>
+            <!-- <th>Success</th>
+            <th>ErrorCode</th> -->
             <th>Message</th>
             <th>MobileNo</th>
-            <th>Status</th>
-            <th>Date Time</th>
+            <th>Credits</th>
+            <th>View</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of ArrayReport; index as i">  
             <td>{{i + 1 }}</td>
             <!-- <th scope="row">{{i+1}}</th> -->
-            <td>{{item.Success }}</td>
-            <td>{{item.ErrorCode }}</td>
+            <!-- <td>{{item.Success }}</td>
+            <td>{{item.ErrorCode }}</td> -->
+            <td>{{item.datetime}}</td>
             <td>{{item.Message }}</td>
             <td>{{item.MobileNo }}</td>
-            <td>{{item.Status }}</td>
-            <td>{{item.datetime}}</td>
+            <td>{{item.Credit }}</td>
+            <td><button (click)="toggleVisibility()"></button> </td>
           </tr>
         </tbody>
       </table>
+
+      <div class="response" *ngIf="selectedItemIndex!==null">
+        <div>
+          <table class="custom-table">
+            <h3>SMS Response</h3>
+              <thead>
+                  <tr>
+                      <th>DateTime</th>
+                      <th>MobileNo</th>
+                      <th>SenderID</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>{{ ArrayReport[selectedItemIndex].datetime}}</td>
+                      <td>{{ ArrayReport[selectedItemIndex].MobileNo}}</td>
+                      
+                      <td>{{ ArrayReport[selectedItemIndex].ErrorCode }}</td>
+                      <td>{{ ArrayReport[selectedItemIndex].Status}}</td>
+                  </tr>
+              </tbody>
+          </table>
+        
+      </div>
+      
+      </div>
   
       <button class="btn" (click)="downloadExcel()">Download</button>
+
+      
 
